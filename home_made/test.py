@@ -61,7 +61,7 @@ for num, item in enumerate(item_dict.values(), start=1):
         print('http_code', http_code)
         if not title:
             print('text@@@', response.text)
-    except (requests.exceptions.ProxyError, requests.exceptions.ProxyError) as pe:
+    except (requests.exceptions.ProxyError, requests.exceptions.ConnectTimeout) as pe:
         print(pe)
 
     if num == 10:
