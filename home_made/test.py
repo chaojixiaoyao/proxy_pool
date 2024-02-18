@@ -153,5 +153,5 @@ class SsdbClient(object):
 
 if __name__ == "__main__":
     redis_config = {"host": "127.0.0.1", "port": 6379, "password": "", "db": 0, "username": "use_proxy"}
-    ss = SsdbClient()
+    ss = SsdbClient(redis_config)
     print(ss.getCount())
