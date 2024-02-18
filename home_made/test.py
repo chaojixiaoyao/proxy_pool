@@ -2,6 +2,8 @@ import redis
 import json
 import requests
 from lxml import etree
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 
 # Redis连接参数
@@ -58,8 +60,8 @@ for num, item in enumerate(item_dict.values(), start=1):
         print('title', xp.xpath('//title/text()'))
         print('http_code', http_code)
         if not title:
-            print(response.text)
-    except requests.exceptions.ProxyError as pe:
+            print('text@@@', response.text)
+    except (requests.exceptions.ProxyError, requests.exceptions.ProxyError) as pe:
         print(pe)
 
     if num == 10:
