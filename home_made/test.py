@@ -37,6 +37,10 @@ for num, item in enumerate(item_dict.values(), start=1):
     item_dict = json.loads(item)
     if not item_dict.get("https"):
         continue
+    elif '中国' in item_dict.get("region") and '香港' not in item_dict.get("region"):
+        continue
+    elif '中国' in item_dict.get("region") and '台湾' not in item_dict.get("region"):
+        continue
     print("proxy", item_dict)
 
     proxy = item_dict['proxy']
