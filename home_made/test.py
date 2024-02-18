@@ -28,23 +28,27 @@ urls = [
     'https://webcache.googleusercontent.com/search?q=cache:https://play.google.com/store/apps/details?id=com.antonio.ukrainiantv',
 ]
 
+proxies = list(filter(lambda x: json.loads(x).get("https"), item_dict))
+for item in proxies:
+    print(item)
+
 # 转换item为Python字典
-for num, item in enumerate(item_dict.values(), start=1):
-    item_dict = json.loads(item)
-    print("proxy", item_dict)
-
-    proxy = item_dict['proxy']
-    proxies = {
-        'http': f'http://{proxy}',
-        'https': f'https://{proxy}'
-    }
-
-    url = urls.pop()
-    response = requests.get(url, headers=headers, proxies=proxies)
-    http_code = response.status_code
-    xp = etree.HTML(response.text)
-    print('title', xp.xpath('//title/text()'))
-    print('http_code', http_code)
-
-    if num == 10:
-        break
+# for num, item in enumerate(item_dict.values(), start=1):
+#     item_dict = json.loads(item)
+#     print("proxy", item_dict)
+#
+#     proxy = item_dict['proxy']
+#     proxies = {
+#         'http': f'http://{proxy}',
+#         'https': f'https://{proxy}'
+#     }
+#
+#     url = urls.pop()
+#     response = requests.get(url, headers=headers, proxies=proxies)
+#     http_code = response.status_code
+#     xp = etree.HTML(response.text)
+#     print('title', xp.xpath('//title/text()'))
+#     print('http_code', http_code)
+#
+#     if num == 10:
+#         break
