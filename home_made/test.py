@@ -28,6 +28,9 @@ urls = [
     'https://webcache.googleusercontent.com/search?q=cache:https://play.google.com/store/apps/details?id=com.antonio.bulgariantv',
     'https://webcache.googleusercontent.com/search?q=cache:https://play.google.com/store/apps/details?id=com.antonio.latviantv',
     'https://webcache.googleusercontent.com/search?q=cache:https://play.google.com/store/apps/details?id=com.antonio.ukrainiantv',
+    'https://webcache.googleusercontent.com/search?q=cache:https://play.google.com/store/apps/details?id=com.antonio.burmesetv',
+    'https://webcache.googleusercontent.com/search?q=cache:https://play.google.com/store/apps/details?id=com.antonio.greektv',
+    'https://webcache.googleusercontent.com/search?q=cache:https://play.google.com/store/apps/details?id=com.antonio.congotvk',
 ]
 
 # proxies = list(filter(lambda x: json.loads(x).get("https"), item_dict.values()))
@@ -59,7 +62,7 @@ for num, item in enumerate(item_dict.values(), start=1):
         title = xp.xpath('//title/text()')
         print('title', xp.xpath('//title/text()'))
         print('http_code', http_code)
-        if not title:
+        if not title or http_code != 200:
             print('text@@@', response.text)
     except (requests.exceptions.ProxyError, requests.exceptions.ConnectTimeout) as pe:
         print(pe)
