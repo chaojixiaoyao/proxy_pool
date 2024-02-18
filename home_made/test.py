@@ -28,7 +28,7 @@ urls = [
     'https://webcache.googleusercontent.com/search?q=cache:https://play.google.com/store/apps/details?id=com.antonio.ukrainiantv',
 ]
 
-proxies = list(filter(lambda x: json.loads(x).get("https"), item_dict))
+proxies = list(filter(lambda x: json.loads(x).get("https"), item_dict.values()))
 for item in proxies:
     print(item)
 
