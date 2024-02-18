@@ -8,4 +8,5 @@ r = redis.Redis(**redis_config)
 
 # 获取哈希表中键值对的数量
 item_dict = r.hgetall("use_proxy")
-print(type(item_dict.values()))
+for item in item_dict.values():
+    print(item)
