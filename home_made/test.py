@@ -50,11 +50,17 @@ for num, item in enumerate(item_dict.values(), start=1):
     }
 
     url = urls.pop()
-    response = requests.get(url, headers=headers, proxies=proxies, verify=False, timeout=10)
-    http_code = response.status_code
-    xp = etree.HTML(response.text)
-    print('title', xp.xpath('//title/text()'))
-    print('http_code', http_code)
+    try:
+        response = requests.get(url, headers=headers, proxies=proxies, verify=False, timeout=10)
+        http_code = response.status_code
+        xp = etree.HTML(response.text)
+        title = xp.xpath('//title/text()')
+        print('title', xp.xpath('//title/text()'))
+        print('http_code', http_code)
+        if not title:
+            print(response.text)
+    except requests.exceptions.ProxyError as pe:
+        print(pe)
 
     if num == 10:
         break
