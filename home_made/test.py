@@ -46,7 +46,7 @@ for num, item in enumerate(item_dict.values(), start=1):
     }
 
     url = urls.pop()
-    response = requests.get(url, headers=headers, proxies=proxies)
+    response = requests.get(url, headers=headers, proxies=proxies, verify=False)
     http_code = response.status_code
     xp = etree.HTML(response.text)
     print('title', xp.xpath('//title/text()'))
