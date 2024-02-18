@@ -18,7 +18,6 @@
 __author__ = 'JHao'
 from redis.exceptions import TimeoutError, ConnectionError, ResponseError
 from redis.connection import BlockingConnectionPool
-from handler.logHandler import LogHandler
 from random import choice
 from redis import Redis
 import json
@@ -139,7 +138,6 @@ class SsdbClient(object):
         self.name = name
 
     def test(self):
-        log = LogHandler('ssdb_client')
         try:
             self.getCount()
         except TimeoutError as e:
